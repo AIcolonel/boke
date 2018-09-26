@@ -1,0 +1,40 @@
+{% extends './layout.html' %}
+
+{% block header %}用户管理中心{% endblock %}
+
+
+{% block content %}
+<h2 class="sub-header">分类列表</h2>
+<a href="/category/add" class="btn btn-primary" style="margin-bottom: 5px;">新增分类</a>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>   
+        <th style="font-weight: bolder">id</th>
+        <th style="font-weight: bolder">分类名</th>
+        <th style="font-weight: bolder">排序</th>
+        <th style="font-weight: bolder">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for key in categories %}
+      <tr>
+        <td>{{ key._id.toString() }}</td>
+        <td>{{ key.name }}</td>
+        <td>{{ key.order }}</td>
+        <td>
+        	<a href="/category/edit/{{ key._id.toString() }}">编辑</a>
+        	<a href="/category/delete/{{ key._id.toString() }}">删除</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div> 
+{% if pages > 1 %}
+
+{% include './pagination.html' %}
+
+{% endif %}
+
+{% endblock %}

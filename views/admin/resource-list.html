@@ -1,0 +1,46 @@
+{% extends './layout.html' %}
+
+{% block header %}用户管理中心{% endblock %}
+
+
+{% block content %}
+<h2 class="sub-header">资源管理</h2>
+<a href="/resource/add" class="btn btn-primary" style="margin-bottom: 5px;">新增资源</a>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>   
+        <th style="font-weight: bolder">标题</th>
+        <th style="font-weight: bolder">缩略图</th>
+        <th style="font-weight: bolder">路径</th>
+        <th style="font-weight: bolder">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for key in resource %}
+      <tr>
+        <td>{{ key.name }}</td>
+        <td>
+          <div>
+            <a href="javascript:;" class="thumbnail">
+              <img src="{{ key.path }}" alt="">
+            </a>
+          </div> 
+        </td>
+        <td>{{ key.path }}</td>
+        <td>
+          <a href="/resource/delete/{{ key._id.toString() }}">删除</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% if pages > 1 %}
+
+{% include './pagination.html' %}
+
+{% endif %}
+
+{% endblock %}

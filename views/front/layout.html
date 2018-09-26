@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	 <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{% block title %}{% endblock %}</title>
+	<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/index.css">
+	{% block link %}{% endblock %}
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top" id="navbar-blog">
+	  <div class="container">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-top" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="">{{ siteDate.name }}</a>
+	    </div>
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="nav-top">
+	      <ul class="nav navbar-nav">
+	      	{% if category %}
+	        <li><a href="/">首页 <span class="sr-only">(current)</span></a></li>
+	        {% else %}
+			<li class="active"><a href="/">首页 <span class="sr-only">(current)</span></a></li>
+	        {% endif %}
+	        {% block list %}{% endblock %}
+	      </ul>
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+	<div class="main">
+		<div class="container">
+			<div class="row"> 
+				<!-- 主内容左边 -->
+				<div class="col-md-8">
+					{% block main %}{% endblock %}
+				</div>
+				<!-- 主内容右边 -->
+				<div class="col-md-4 hidden-xs hidden-sm">
+					<!-- 表单开始 -->
+						{% if userInfo.id %}
+
+						<!-- 用户信息显示开始 -->
+						<div class="form-group" id="exit">
+							<div class="btn btn-primary btn-block">欢迎{{ userInfo.username }}</div>
+
+							{% if userInfo.isAdmin %}
+							<a href="/admin" class="btn-register btn">进入管理中心</a>
+							{% else %}
+							<a href="/home" class="btn-register btn">进入用户中心</a>
+							{% endif %}
+
+						    <a href="javascript:;" class="btn-register btn" id="btn-exit">退出账号</a>
+						 </div>
+						<!-- 用户信息显示结束 -->
+
+						{% else %}
+
+						<!-- 注册开始 -->
+						<form class="form-horizontal" id="register" style="display: none;">
+						  <div class="form-group">
+						    <label class="col-sm-3 control-label">用户名</label>
+						    <div class="col-sm-8">
+						      <input type="text" class="form-control username" placeholder="请输入用户名" name="username">
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label class="col-sm-3 control-label">密码</label>
+						    <div class="col-sm-8">
+						      <input type="password" class="form-control password" placeholder="请输入密码" name="password">
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label class="col-sm-3 control-label">确认密码</label>
+						    <div class="col-sm-8">
+						      <input type="password" class="form-control repassword" placeholder="请再次输入密码" name="repassword">
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <div class="col-sm-offset-3 col-sm-8">
+						      <a href="javascript:;" class="btn btn-primary btn-block btn-register">注册</a>
+						    </div>
+						  </div>
+						  <div class="form-group">
+						      <a href="javascript:;" class="btn-login btn" id="btn-login">已有账号，去登陆</a>
+						  </div>
+						  <div class="form-group">
+						      <p class="text-danger col-sm-11" style="padding-left: 20px"></p>
+						  </div>
+						</form>
+						<!-- 注册结束 -->
+
+						<!-- 登录开始 -->
+						<form class="form-horizontal" id="login">
+						  <div class="form-group">
+						    <label class="col-sm-3 control-label">用户名</label>
+						    <div class="col-sm-8">
+						      <input type="text" class="form-control username" placeholder="请输入用户名" name="username">
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label class="col-sm-3 control-label">密码</label>
+						    <div class="col-sm-8">
+						      <input type="password" class="form-control password" placeholder="请输入密码" name="password">
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <div class="col-sm-offset-3 col-sm-8">
+						      <a href="javascript:;" class="btn btn-primary btn-block btn-login">登录</a>
+						    </div>
+						  </div>
+						  <div class="form-group">
+						      <a href="javascript:;" class="btn-register btn" id="btn-register">注册账号</a>
+						  </div>
+						  <div class="form-group">
+						      <p class="text-danger col-sm-11" style="padding-left: 20px"></p>
+						  </div>
+						</form>
+						<!-- 登录结束 -->
+
+						{% endif %}
+						
+					<!-- 表单结束 -->
+
+					<!-- 广告开始 -->
+					{% for key in siteDate.ads %}
+					<div class="ad">
+		                <a href="{{ key.url }}" class="thumbnail">
+		                    <img class="img-responsive" src="{{ key.path }}" alt="...">
+		                </a>
+	              	</div>
+	              	{% endfor %}
+	              	<!-- <div class="ad">
+		                <a href="#" class="thumbnail">
+		                    <img class="img-responsive" src="/img/ad2.jpg" alt="...">
+		                </a>
+	              	</div> -->
+					<!-- 广告结束 -->
+
+					<!-- 博主介绍开始 -->
+					<div class="panel panel-default">
+						  	<!-- Default panel contents -->
+						  	<div class="panel-heading">博主介绍</div>
+						  	<div class="panel-body">
+						  		<div class="body-img">
+						  			<img class="img-circle" src="/img/logo.jpg">
+						  		</div>
+						    	<div class="body-content">
+						    		<strong>
+						    		{{ siteDate.author.name }}
+						    		</strong><br/>
+						    		{{ siteDate.author.intro }}
+						    	</div>
+						  	</div>
+					</div>
+					<!-- 博主介绍结束 -->
+
+					<!-- 点击排行开始 -->
+					<div class="panel panel-default">
+						  	<!-- Default panel contents -->
+						  	<div class="panel-heading">点击排行</div>
+						  	<div class="panel-body">
+						  		<!-- List group -->
+						  		<!-- 对点击排行进行循环，动态添加内容 -->
+							  	<ul class="list-group body-ul">
+							  		{% for key in clickList %}
+							   	 	<li class="link list-group-item body-item text-ellipsis"><a class="link" href="/view/{{ key._id.toString() }}" style="color: #000;">阅读量：[{{ key.click }}]: {{ key.intro }}</a></li>
+							   	 	{% endfor %}
+							  	</ul>
+						  	</div>
+					</div>
+					<!-- 点击排行结束 -->
+
+					<!-- 二维码开始 -->
+					<div class="panel panel-default">
+					  	<!-- Default panel contents -->
+					  	<div class="panel-heading">点击关注</div>
+					  	<div class="panel-body body-wechat">
+					  		<img class="wechat-img" src="/img/wechat.gif">
+						</div>	
+					</div>
+					<!-- 二维码结束 -->
+				</div><!-- 主内容右边 -->
+			</div><!-- row -->
+		</div><!-- container -->
+	</div><!-- main -->
+
+	<!-- footer开始 -->
+	 <footer>
+      	<p>Blog Design by <a href="#">Kuazhu</a> <a href="#">豫ICP备11002373号-1</a></p>
+    </footer>
+	<!-- footer结束 -->
+</body>
+<script type="text/javascript" src="/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/moment/moment.js"></script>
+<script type="text/javascript" src="/js/pagination.js"></script>
+{% block reference %}{% endblock %}
+<script type="text/javascript" src="/js/index.js"></script>
+</html>

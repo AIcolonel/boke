@@ -1,0 +1,41 @@
+{% extends './layout.html' %}
+
+{% block header %}用户管理中心{% endblock %}
+
+
+{% block content %}
+<h2 class="sub-header">评论信息</h2>
+<div class="table-responsive">
+  <table class="table table-striped" style="table-layout: fixed;">
+    <thead>
+      <tr>   
+        <th style="font-weight: bolder">文章标题</th>
+        <th style="font-weight: bolder;word-break: break-word">文章内容</th>
+        <th style="font-weight: bolder">评论者</th>
+        <th style="font-weight: bolder">创建时间</th>
+        <th style="font-weight: bolder">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for key in comment %}
+      <tr>
+        <td>{{ key.article.title }}</td>
+        <td>{{ key.content }}</td>
+        <td>{{ key.user.username }}</td>
+        <td>{{ key.createAt | date('Y年m月d日 H:i:s',-8*60) }}</td>
+        <td>
+          <a href="/admin/comment/delete/{{ key._id.toString() }}">删除</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% if pages > 1 %}
+
+{% include './pagination.html' %}
+
+{% endif %}
+
+{% endblock %}

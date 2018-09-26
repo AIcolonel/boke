@@ -1,0 +1,46 @@
+{% extends './layout.html' %}
+
+{% block header %}用户管理中心{% endblock %}
+
+
+{% block content %}
+<h2 class="sub-header">文章分类</h2>
+<a href="/article/add" class="btn btn-primary" style="margin-bottom: 5px;">新增文章</a>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>   
+        <th style="font-weight: bolder">标题</th>
+        <th style="font-weight: bolder">类型</th>
+        <th style="font-weight: bolder">作者</th>
+        <th style="font-weight: bolder">创建时间</th>
+        <th style="font-weight: bolder">点击量</th>
+        <th style="font-weight: bolder">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for key in articles %}
+      <tr>
+        <td>{{ key.title }}</td>
+        <td>{{ key.category.name }}</td>
+        <td>{{ key.author.username }}</td>
+        <td>{{ key.createAt | date('Y年m月d日 H:i:s',-8*60) }}</td>
+        <td>{{ key.click }}</td>
+        <td>
+          <a href="javascript:;">查看</a>
+          <a href="/article/edit/{{ key._id.toString() }}">编辑</a>
+          <a href="/article/delete/{{ key._id.toString() }}">删除</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% if pages > 1 %}
+
+{% include './pagination.html' %}
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>用户信息中心</title>
+
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="/css/dashboard.css" rel="stylesheet">
+    <link href="/css/admin.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">用户管理中心</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <div class="dropdown admin-dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  {{ userInfo.username }}
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <li><a href="#" id="admin-exit">退出系统</a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active" style="margin-bottom: 5px;">
+              <a href="/home/comments">
+              评论管理
+              <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="active" style="margin-bottom: 5px;">
+              <a href="/home/changepassword">
+              修改密码
+              <span class="sr-only">(current)</span>
+              </a>
+            </li>
+          </ul>
+          
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">
+            {% block header %}{% endblock %}
+          </h1>
+          {% block content %}{% endblock %}
+        </div> 
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="/js/jquery-1.12.4.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    </script>
+    <script type="text/javascript" src="/js/admin.js"></script>
+    {% block end %}{% endblock %}
+  </body>
+</html>

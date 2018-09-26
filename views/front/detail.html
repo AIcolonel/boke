@@ -1,0 +1,117 @@
+{% extends './layout.html' %}
+
+{% block title %}
+{{ article.title }}
+{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="/css/detail.css">
+{% endblock %}
+
+{% block list %}
+
+{% for key in categories %}
+{% if key._id.toString() == category %}
+<li class="active"><a href="/list/{{ key._id.toString() }}">{{ key.name }}</a></li>
+{% else %}
+<li><a href="/list/{{ key._id.toString() }}">{{ key.name }}</a></li>
+{% endif %}
+{% endfor %}
+
+{% endblock %}
+
+{% block main %}
+<div class="panel panel-default custom-panel detail-content">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+    	<!-- {{ article.title }} -->
+    </h3>
+    <p class="sub-title">
+    	<span class="text-muted">{{ article.category.name }}</span>
+    	<span class="text-muted">
+    	{{ article.createAt | date('Y年m月d日 H:i:s',-8*60) }}
+    	</span>
+    	<span class="text-muted"><em>{{ article.click }}</em>人已阅读</span>
+    </p>
+  </div>
+  <div class="panel-body">
+	<div class="well">
+		<strong>简介:</strong>
+		{{ article.intro }}
+	</div>
+	<p>{{ article.content | safe }}</p>
+  </div>
+</div>	
+
+{% if userInfo.id %}
+<!-- 提交评论 -->
+<div class="row">
+	<div class="col-lg-12">
+	    <div class="input-group">
+	      <input type="text" class="form-control" placeholder="请输入你想评论的内容" id="comment-content">
+	      <span class="input-group-btn">
+	      	<input type="hidden" value="{{ article._id.toString() }}" id="article-id">
+	        <a href="javascript:;" class="btn btn-primary" type="button" id="comment-btn">提交</a>
+	      </span>
+	    </div><!-- /input-group -->
+	     <p class="text-danger errmsg"></p>
+	</div><!-- /.col-lg-6 -->
+</div>
+{% else %}
+<div class="alert alert-info" role="alert">
+	请登录后再进行评论
+</div>
+{% endif %}
+
+<!-- 提交内容 -->
+<div class="row">
+	<div class="col-lg-12">
+		<div id="comment-list">
+			{% for key in comments %}
+			<div class="panel panel-default">
+			  	<div class="panel-heading">
+			  	{{ key.user.username }} 发表于 {{ key.createAt | date('Y年m月d日 H:i:s',-8*60) }}
+			  	</div>
+			  	<div class="panel-body" style="word-break: break-word">
+			    	{{ key.content }}
+			  	</div>
+			</div>
+			{% endfor %}
+		</div>
+		<!-- 分页开始 -->
+		<nav aria-label="Page navigation" id="comment-page" data-url="/comment/list" data-id="{{ article._id.toString() }}">
+		  {% if pages > 1 %}
+		  <ul class="pagination">
+		    <li>
+		      <a href="javascript:;" aria-label="Previous">
+		        <span aria-hidden="true">&laquo;</span>
+		      </a>
+		    </li>
+		    {% for i in list %}
+
+		    {% if i==page %}
+		    <li class="active"><a href="javascript:;">{{ i }}</a></li>
+		    {% else %}
+		    <li><a href="javascript:;">{{ i }}</a></li>
+		    {% endif %}
+
+		    {% endfor %}
+		    
+		    <li>
+		      <a href="javascript:;" aria-label="Next">
+		        <span aria-hidden="true">&raquo;</span>
+		      </a>
+		    </li>
+		  </ul>
+		  {% endif %}
+		</nav>
+		<!-- 分页结束 -->
+	</div>
+</div>
+
+{% endblock %}
+
+{% block reference %}
+<script type="text/javascript" src="/js/comment.js"></script>
+{% endblock %}
+

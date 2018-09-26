@@ -1,0 +1,144 @@
+{% extends './layout.html' %}
+
+{% block title %}Personal blog Top{% endblock %}
+
+{% block list %}
+
+{% for key in category %}
+<li><a href="#">{{ key.name }}</a></li>
+{% endfor %}
+
+{% endblock %}
+
+{% block main %}
+	<!-- 轮播图开始 -->
+	<div id="main-carousel" class="carousel slide" data-ride="carousel">
+	  <!-- Indicators -->
+	  	<ol class="carousel-indicators">
+	   	 	<li data-target="#main-carousel" data-slide-to="0" class="active"></li>
+	    	<li data-target="#main-carousel" data-slide-to="1"></li>
+	    	<li data-target="#main-carousel" data-slide-to="2"></li>
+	 	 </ol>
+
+	  <!-- Wrapper for slides -->
+	  	<div class="carousel-inner" role="listbox">
+	    	<div class="item active">
+	      		<img src="img/coursel1.jpg" class="img-responsive" alt="Responsive image">
+	    	</div>
+	    	<div class="item">
+		      	<img src="img/coursel2.jpg" class="img-responsive" alt="Responsive image">
+		    </div>
+		    <div class="item">
+		      	<img src="img/coursel3.jpg" class="img-responsive" alt="Responsive image">
+		    </div>
+		    <!-- Controls -->
+			<a class="left carousel-control" href="#main-carousel" role="button" data-slide="prev">
+			    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			    <span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#main-carousel" role="button" data-slide="next">
+			    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			    <span class="sr-only">Next</span>
+			</a>
+	    </div>
+	    <!-- 轮播图结束 -->
+	</div>
+	<!-- 介绍列表开始 -->
+	<div class="panel panel-default content-item">
+	  	<!-- Default panel contents -->
+	  	<div class="panel-heading">
+	  		<h3><a class="link" href="#">艾伦·耶格尔 / 艾伦·叶卡 (エレン･イェーガー Eren Jäger)</a></h3>
+	  	</div>
+	  	<div class="panel-body">
+	   		 <p>年龄：15岁生日：3月30日身高：170cm体重：63kg</p>
+			<p>公式书数据：格斗术9 行动力10 头脑战7 协调性5 热血10 教官评价A</p>
+			<p>第104期训练兵团毕业生的No.5，现为调查兵团新入生。</p>
+			<p>本作的男主角。自幼目睹母亲被巨人吃掉，对巨人有着非同寻常的憎恨。曾被父亲注射过不明药物，使其在被巨人吃掉时第一次巨人化，改变了特罗斯特区的战况，但因此被驻屯兵团当成威胁而围攻，危急时刻被匹西斯司令解围，之后参与了特罗斯特区夺回作战。一开始在巨人化时会失去意识（后期有所改善，拥有自主意识），曾攻击三笠，后来被阿明成功唤回思想，举起巨石堵住了被破坏的城墙，使得人类第一次从巨人手里夺回了土地。在军事法庭上被宪兵团团长和主教认定是人类的威胁而要求判死刑，但在调查兵团团长艾维尔和士兵长利威尔的保证下以有待观察的条件，并交给兵长看护加入了调查兵团。</p>
+			<p>主角队伍的精神支柱，拥有在任何情况下都永不放弃的意志力，并且经常影响到周围的人。在漫画62话中得知，在其父亲给艾伦注射药剂后被巨人化的艾伦吃掉从而使艾伦变成智慧巨人</p>
+			<p>性格：基本属于开朗型，心性坚毅，能够服从命令而不徇私情，完全没有大局意识。但为人真诚大度说到做到，故很容易获得同伴的信任，但当看到同伴被杀时容易失去冷静，且毫不掩饰自己对贪生怕死者的厌恶</p>
+			<p>姓名考据：Jäger<耶格尔>，Jäger即德语“猎人”；Eren<艾伦>，Ehren即德语“荣誉”。Jeager为北欧神话中创世巨人。</p>
+	  	</div>
+		<div class="panel-footer">
+            <span class="glyphicon glyphicon-user"></span>
+            <span class="content-footer-text text-muted">zhuangzhaungchen</span>
+            <span class="glyphicon glyphicon-th-list"></span>
+            <span class="content-footer-text text-muted">人物简介</span>
+            <span class="glyphicon glyphicon-time"></span>
+            <span class="content-footer-text text-muted">2018-07-01</span>
+            <span class="glyphicon glyphicon-eye-open"></span>
+            <span class="content-footer-text text-muted"><em>1000</em>已阅读</span>
+         </div>
+	</div>
+	<div class="panel panel-default content-item">
+	  	<!-- Default panel contents -->
+	  	<div class="panel-heading">
+	  		<h3><a class="link" href="#">三笠·阿克曼 / 米卡莎·阿卡曼 (ミカサ·アッカーマン Mikasa Ackerman)</a></h3>
+	  	</div>
+	  	<div class="panel-body">
+	   		 <p>年龄：15岁生日：2月10日身高：170cm体重：68kg</p>
+			<p>公式书数据：格斗术10 行动力9 头脑战8 协调性6 关心家人10 教官评价A+</p>
+			<p>第104期训练兵团毕业生的No.1，现为调查兵团新入生。</p>
+			<p>本作的女主角。有着一半东洋血统的混血儿，平时总是一副扑克脸。年幼时父母在拐卖人口的事件中被杀害，自己也险些被贩卖，后被幼年之时的艾伦所救得以保命，从此和艾伦一家生活在一起，视艾伦为家人、生命的全部。为了保护艾伦，一直阻止他加入调查兵团，但知道自己无法阻止时，便决定跟他一起加入并下定决心要保护他。曾经一度以为艾伦已死而放弃生念，之后重新燃起了斗志，并在艾伦回归时难得地表现出剧烈情感。只要是为了艾伦，不管是巨人还是人类，全部都会杀掉。拥有通过任何困难任务的执行力，被评价为史无前例的人材。</p>
+			<p>性格：基本属于冷静型，但只要艾伦遇到了危险，就会变得不顾一切。后期变得成熟稳重，不会意气用事，还会劝阻其它成员顾全大局服从利威尔的命令。</p>
+			<p>姓氏考据：Mikasa Ackerman Acker是田地，即field，Ackerman<阿克曼>就是农民，与三笠儿时一家的农民生活完全吻合。</p>
+	  	</div>
+		<div class="panel-footer">
+            <span class="glyphicon glyphicon-user"></span>
+            <span class="content-footer-text text-muted">zhuangzhaungchen</span>
+            <span class="glyphicon glyphicon-th-list"></span>
+            <span class="content-footer-text text-muted">人物简介</span>
+            <span class="glyphicon glyphicon-time"></span>
+            <span class="content-footer-text text-muted">2018-07-01</span>
+            <span class="glyphicon glyphicon-eye-open"></span>
+            <span class="content-footer-text text-muted"><em>1000</em>已阅读</span>
+         </div>
+	</div>
+	<div class="panel panel-default content-item">
+	  	<!-- Default panel contents -->
+	  	<div class="panel-heading">
+	  		<h3><a class="link" href="#">阿明·阿诺德 / 爱尔敏·亚鲁雷特 (アルミン·アルレルト Armin Arlart)</a></h3>
+	  	</div>
+	  	<div class="panel-body">
+	   		 <p>年龄：15岁 生日：11月3日 身高：163cm 体重：55kg</p>
+			<p>公式书数据：格斗术2 行动力6 头脑战10 协调性8 判断力10 教官评价A+</p>
+			<p>第104期训练兵团毕业生，现为调查兵团新入生。
+			艾伦和三笠的儿时伙伴。自幼便常被他人欺负，而艾伦和三笠总会为阿明解围，是相当要好的朋友。实战技术勉强及格，但关键时刻总能想出脱困的方法。刚上阵时表现得性格懦弱，在遭遇巨人时身体动不了了，一度认为自己害死了艾伦而自责不已，经常被自己是累赘的想法充斥着，后来在三笠和艾伦的鼓励下变得坚强。曾献计成功夺回特罗斯特区，运用自己的头脑多次让艾伦和三笠化险为夷，被两人无条件地信任着，艾伦和三笠都愿意在关键时刻把性命交给她。曾经看出女巨人的真面目。</p>
+			<p>主角队伍的智囊，拥有不输给将军参谋的头脑，经常看穿敌人的目的和真面目，并制定相应的作战计划。善于击破敌人的心理防线。性别不明。</p>
+			<p>性格：基本属于谨慎型，自卑心较强，但是关键时刻总能找出正确的方法来解决危机。</p>
+	  	</div>
+		<div class="panel-footer">
+            <span class="glyphicon glyphicon-user"></span>
+            <span class="content-footer-text text-muted">zhuangzhaungchen</span>
+            <span class="glyphicon glyphicon-th-list"></span>
+            <span class="content-footer-text text-muted">人物简介</span>
+            <span class="glyphicon glyphicon-time"></span>
+            <span class="content-footer-text text-muted">2018-07-01</span>
+            <span class="glyphicon glyphicon-eye-open"></span>
+            <span class="content-footer-text text-muted"><em>1000</em>已阅读</span>
+         </div>
+	</div>
+	<!-- 介绍列表结束 -->
+
+	<!-- 分页开始 -->
+	<nav aria-label="Page navigation" id="Page">
+	  	<ul class="pagination">
+	    	<li>
+	      		<a class="link" href="#" aria-label="Previous">
+	        	<span aria-hidden="true">&laquo;</span>
+	      		</a>
+	    	</li>
+	    	<li><a class="link" href="#">1</a></li>
+	    	<li><a class="link" href="#">2</a></li>
+	    	<li><a class="link" href="#">3</a></li>
+	    	<li><a class="link" href="#">4</a></li>
+	    	<li><a class="link" href="#">5</a></li>
+	   		 <li>
+	      		<a class="link" href="#" aria-label="Next">
+	        		<span aria-hidden="true">&raquo;</span>
+	      		</a>
+	    	</li>
+	  	</ul>
+	</nav>
+	<!-- 分页结束 -->
+{% endblock %}
+
